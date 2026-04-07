@@ -8,6 +8,7 @@ interface ButtonProps {
   variant?: ButtonVariant;
   size?: ButtonSize;
   href?: string;
+  external?: boolean;
   className?: string;
   type?: "button" | "submit";
   disabled?: boolean;
@@ -16,11 +17,11 @@ interface ButtonProps {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-brand-blue text-white hover:bg-brand-blue-light shadow-sm hover:shadow-md",
+    "bg-brand-blue text-white hover:bg-brand-blue-light shadow-sm hover:shadow-md focus:ring-brand-blue",
   secondary:
-    "bg-brand-gold text-brand-text hover:bg-brand-gold-dark shadow-sm hover:shadow-md font-bold",
+    "bg-brand-gold text-brand-text hover:bg-brand-gold-dark shadow-sm hover:shadow-md font-bold focus:ring-brand-gold",
   outline:
-    "border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white",
+    "border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white focus:ring-brand-blue",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
@@ -34,18 +35,23 @@ export function Button({
   variant = "primary",
   size = "md",
   href,
+  external = false,
   className = "",
   type = "button",
   disabled = false,
   onClick,
 }: ButtonProps) {
   const base =
-    "inline-flex items-center justify-center font-heading font-semibold rounded-lg transition-all duration-200 hover:-translate-y-px active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-brand-blue/50";
+    "inline-flex items-center justify-center font-heading font-semibold rounded-lg transition-all duration-200 hover:-translate-y-px active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-offset-2";
   const styles = `${base} ${variantStyles[variant]} ${sizeStyles[size]} ${disabled ? "opacity-50 cursor-not-allowed" : ""} ${className}`;
 
   if (href) {
     return (
-      <Link href={href} className={styles}>
+      <Link
+        href={href}
+        className={styles}
+        {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      >
         {children}
       </Link>
     );

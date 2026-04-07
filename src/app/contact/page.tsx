@@ -4,6 +4,7 @@ import { Hero } from "@/components/sections/Hero";
 import { IMAGES } from "@/lib/images";
 import { Container } from "@/components/ui/Container";
 import { Card } from "@/components/ui/Card";
+import { Button } from "@/components/ui/Button";
 import { BRAND } from "@/lib/constants";
 import { ContactForm } from "@/components/forms/ContactForm";
 
@@ -95,14 +96,9 @@ export default function ContactPage() {
                   <p className="text-brand-text-light mb-4">
                     Schedule a free 30-minute consultation to discuss your needs.
                   </p>
-                  <a
-                    href={BRAND.calendlyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center px-6 py-3 bg-brand-blue text-white font-heading font-semibold rounded-lg hover:bg-brand-blue-light transition-colors"
-                  >
+                  <Button variant="primary" href={BRAND.calendlyUrl} external>
                     Book a Time
-                  </a>
+                  </Button>
                 </div>
               </div>
 

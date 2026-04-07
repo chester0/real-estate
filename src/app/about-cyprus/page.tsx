@@ -56,7 +56,7 @@ export default function AboutCyprusPage() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {LIMASSOL_AREAS.map((area) => (
               <Card key={area.name} className="overflow-hidden p-0">
-                <div className="relative h-40">
+                <div className="relative h-48">
                   <Image
                     src={areaImageKeys[area.name] || IMAGES.areas.germasogeia}
                     alt={area.name}
@@ -66,23 +66,23 @@ export default function AboutCyprusPage() {
                   />
                 </div>
                 <div className="p-5">
-                <div className="flex items-center gap-2 mb-3">
-                  <MapPin size={18} className="text-brand-blue" />
-                  <h3 className="text-lg font-heading font-bold text-brand-text">
-                    {area.name}
-                  </h3>
-                </div>
-                <p className="text-brand-text-light text-sm leading-relaxed">
-                  {area.description}
-                </p>
-                <div className="mt-4 flex items-center gap-3">
-                  <span className="inline-block rounded-full bg-brand-blue/10 px-3 py-1 text-xs font-semibold text-brand-blue">
-                    {area.lifestyle}
-                  </span>
-                  <span className="text-xs text-brand-text-light">
-                    {area.priceRange}
-                  </span>
-                </div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <MapPin size={18} className="text-brand-blue" />
+                    <h3 className="text-lg font-heading font-bold text-brand-text">
+                      {area.name}
+                    </h3>
+                  </div>
+                  <p className="text-brand-text-light text-sm leading-relaxed">
+                    {area.description}
+                  </p>
+                  <div className="mt-4 flex items-center gap-3">
+                    <span className="inline-block rounded-full bg-brand-blue/10 px-3 py-1 text-xs font-semibold text-brand-blue">
+                      {area.lifestyle}
+                    </span>
+                    <span className="text-xs text-brand-text-light">
+                      {area.priceRange}
+                    </span>
+                  </div>
                 </div>
               </Card>
             ))}
