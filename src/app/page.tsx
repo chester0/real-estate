@@ -115,9 +115,9 @@ export default function HomePage() {
                     <Star key={i} size={16} className="fill-brand-gold text-brand-gold" />
                   ))}
                 </div>
-                <div className="relative">
-                  <span className="absolute -top-2 -left-1 text-4xl text-brand-gold/30 font-serif leading-none">&ldquo;</span>
-                  <p className="text-brand-text-light leading-relaxed italic flex-1 pl-4">
+                <div className="relative pl-6">
+                  <span className="absolute top-0 left-0 text-5xl text-brand-gold/50 font-serif leading-none select-none" aria-hidden="true">&ldquo;</span>
+                  <p className="text-brand-text-light leading-relaxed italic flex-1">
                     {t.quote}
                   </p>
                 </div>

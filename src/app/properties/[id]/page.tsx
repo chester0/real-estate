@@ -213,7 +213,7 @@ export default async function PropertyDetailPage({
 
             {/* Right — Contact Sidebar */}
             <div className="lg:col-span-1">
-              <div className="sticky top-24 space-y-6">
+              <div className="sticky top-20 space-y-6">
                 <Card hover={false} className="bg-brand-gray border-0">
                   <h3 className="font-heading font-bold text-brand-text mb-4">
                     Interested in this property?
@@ -270,8 +270,8 @@ export default async function PropertyDetailPage({
           </h2>
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {otherProperties.map((p) => (
-              <Link key={p.id} href={`/properties/${p.id}`}>
-                <Card className="overflow-hidden p-0">
+              <Link key={p.id} href={`/properties/${p.id}`} className="group rounded-xl focus:outline-none">
+                <Card className="overflow-hidden p-0 group-focus-visible:ring-2 group-focus-visible:ring-brand-blue group-focus-visible:ring-offset-2">
                   <div className="relative h-48">
                     <Image
                       src={p.image}
@@ -287,15 +287,15 @@ export default async function PropertyDetailPage({
                     )}
                   </div>
                   <div className="p-5">
-                    <p className="text-xl font-heading font-bold text-brand-blue">
-                      {formatPrice(p.price)}
-                    </p>
-                    <h3 className="mt-1 font-heading font-semibold text-brand-text text-sm">
+                    <h3 className="font-heading font-semibold text-brand-text text-sm">
                       {p.title}
                     </h3>
-                    <div className="mt-2 flex items-center gap-1 text-xs text-brand-text-light">
+                    <div className="mt-1 flex items-center gap-1 text-xs text-brand-text-light">
                       <MapPin size={12} /> {p.location}
                     </div>
+                    <p className="mt-2 text-xl font-heading font-bold text-brand-blue">
+                      {formatPrice(p.price)}
+                    </p>
                     <div className="mt-3 flex items-center gap-4 text-xs text-brand-text-light">
                       <span className="flex items-center gap-1"><Bed size={12} /> {p.bedrooms}</span>
                       <span className="flex items-center gap-1"><Bath size={12} /> {p.bathrooms}</span>

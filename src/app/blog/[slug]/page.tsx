@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, CalendarDays } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 import { Container } from "@/components/ui/Container";
 import { CTABanner } from "@/components/sections/CTABanner";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
@@ -29,67 +30,6 @@ export async function generateMetadata({
       publishedTime: post.date,
     },
   };
-}
-
-function renderMarkdown(content: string) {
-  // Simple markdown-to-HTML for paragraphs, headings, lists, bold, links
-  const lines = content.split("\n");
-  const elements: React.ReactNode[] = [];
-  let i = 0;
-
-  while (i < lines.length) {
-    const line = lines[i];
-
-    if (line.startsWith("## ")) {
-      elements.push(
-        <h2
-          key={i}
-          className="text-2xl font-heading font-bold text-brand-text mt-10 mb-4"
-        >
-          {line.slice(3)}
-        </h2>
-      );
-    } else if (line.startsWith("### ")) {
-      elements.push(
-        <h3
-          key={i}
-          className="text-xl font-heading font-bold text-brand-text mt-8 mb-3"
-        >
-          {line.slice(4)}
-        </h3>
-      );
-    } else if (line.startsWith("- ")) {
-      const listItems: string[] = [];
-      while (i < lines.length && lines[i].startsWith("- ")) {
-        listItems.push(lines[i].slice(2));
-        i++;
-      }
-      elements.push(
-        <ul
-          key={`list-${i}`}
-          className="list-disc list-inside space-y-1 text-brand-text-light leading-relaxed my-4"
-        >
-          {listItems.map((item, idx) => (
-            <li key={idx}>{item}</li>
-          ))}
-        </ul>
-      );
-      continue;
-    } else if (line.trim() === "") {
-      // skip empty lines
-    } else {
-      elements.push(
-        <p
-          key={i}
-          className="text-brand-text-light leading-relaxed my-4"
-        >
-          {line}
-        </p>
-      );
-    }
-    i++;
-  }
-  return elements;
 }
 
 export default async function BlogPostPage({
@@ -139,8 +79,8 @@ export default async function BlogPostPage({
 
       <section className="py-12">
         <Container>
-          <article className="max-w-3xl mx-auto">
-            {renderMarkdown(post.content)}
+          <article className="prose max-w-3xl mx-auto">
+            <ReactMarkdown>{post.content}</ReactMarkdown>
           </article>
         </Container>
       </section>

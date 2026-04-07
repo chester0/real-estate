@@ -181,13 +181,20 @@ export default function ServicesPage() {
                   Pricing
                 </h3>
                 <div className="space-y-4">
-                  {service.pricing.map((p) => (
-                    <Card key={p.tier} hover={false}>
+                  {service.pricing.map((p, pIdx) => (
+                    <Card key={p.tier} hover={false} className={pIdx === 1 ? "border-2 border-brand-blue bg-brand-blue/5" : ""}>
                       <div className="flex items-center justify-between">
                         <div>
-                          <p className="font-heading font-semibold text-brand-text">
-                            {p.tier}
-                          </p>
+                          <div className="flex items-center gap-2">
+                            <p className="font-heading font-semibold text-brand-text">
+                              {p.tier}
+                            </p>
+                            {pIdx === 1 && (
+                              <span className="text-xs bg-brand-blue text-white px-2 py-0.5 rounded-full font-semibold">
+                                Popular
+                              </span>
+                            )}
+                          </div>
                           <p className="text-sm text-brand-text-light">
                             {p.desc}
                           </p>

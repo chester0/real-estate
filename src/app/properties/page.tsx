@@ -34,33 +34,16 @@ export default function PropertiesPage() {
         backgroundImage={IMAGES.heroProperties}
       />
 
-      {/* Filter Bar Placeholder */}
-      <section className="py-6 bg-white border-b border-gray-100">
+      {/* Filter Info */}
+      <section className="py-4 bg-white border-b border-gray-100">
         <Container>
-          <div className="flex flex-wrap gap-4 items-center">
-            <select className="rounded-lg border border-gray-200 px-4 py-2 text-sm text-brand-text-light bg-white focus:outline-none focus:ring-2 focus:ring-brand-blue/20">
-              <option value="">All Cities</option>
-              <option>Limassol</option>
-              <option>Paphos</option>
-              <option>Nicosia</option>
-              <option>Larnaca</option>
-              <option>Ayia Napa</option>
-            </select>
-            <select className="rounded-lg border border-gray-200 px-4 py-2 text-sm text-brand-text-light bg-white focus:outline-none focus:ring-2 focus:ring-brand-blue/20">
-              <option value="">All Types</option>
-              <option>Apartment</option>
-              <option>Penthouse</option>
-              <option>Villa</option>
-              <option>Land</option>
-            </select>
-            <select className="rounded-lg border border-gray-200 px-4 py-2 text-sm text-brand-text-light bg-white focus:outline-none focus:ring-2 focus:ring-brand-blue/20">
-              <option value="">Any Price</option>
-              <option>Up to &euro;200,000</option>
-              <option>&euro;200,000 &ndash; &euro;400,000</option>
-              <option>&euro;400,000 &ndash; &euro;700,000</option>
-              <option>&euro;700,000+</option>
-            </select>
-          </div>
+          <p className="text-sm text-brand-text-light">
+            Showing all available properties.{" "}
+            <Link href="/contact" className="text-brand-blue font-semibold hover:underline">
+              Contact us
+            </Link>{" "}
+            to search by specific criteria or access off-market listings.
+          </p>
         </Container>
       </section>
 
@@ -69,8 +52,8 @@ export default function PropertiesPage() {
         <Container>
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {getAllProperties().map((property) => (
-              <Link key={property.id} href={`/properties/${property.id}`}>
-              <Card className="overflow-hidden p-0">
+              <Link key={property.id} href={`/properties/${property.id}`} className="group rounded-xl focus:outline-none">
+              <Card className="overflow-hidden p-0 group-focus-visible:ring-2 group-focus-visible:ring-brand-blue group-focus-visible:ring-offset-2">
                 <div className="relative h-48">
                   <Image
                     src={IMAGES.properties[parseInt(property.id) - 1] || IMAGES.properties[0]}
@@ -89,17 +72,17 @@ export default function PropertiesPage() {
                   </span>
                 </div>
                 <div className="p-5">
-                  <p className="text-2xl font-heading font-bold text-brand-blue">
-                    {formatPrice(property.price)}
-                  </p>
-                  <h3 className="mt-1 font-heading font-semibold text-brand-text">
+                  <h3 className="font-heading font-semibold text-brand-text">
                     {property.title}
                   </h3>
-                  <div className="mt-2 flex items-center gap-1 text-sm text-brand-text-light">
+                  <div className="mt-1 flex items-center gap-1 text-sm text-brand-text-light">
                     <MapPin size={14} />
                     {property.location}
                   </div>
-                  <div className="mt-4 flex items-center gap-4 text-sm text-brand-text-light">
+                  <p className="mt-3 text-2xl font-heading font-bold text-brand-blue">
+                    {formatPrice(property.price)}
+                  </p>
+                  <div className="mt-3 flex items-center gap-4 text-sm text-brand-text-light">
                     <span className="flex items-center gap-1">
                       <Bed size={14} /> {property.bedrooms} bed
                     </span>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, KeyRound } from "lucide-react";
 import { BRAND } from "@/lib/constants";
 
 const footerLinks = {
@@ -25,7 +25,7 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/20">
-                <span className="text-base font-bold font-heading">R</span>
+                <KeyRound size={16} className="text-brand-gold" />
               </div>
               <span className="text-lg font-bold font-heading">{BRAND.name}</span>
             </div>
