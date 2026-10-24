@@ -4,6 +4,12 @@
 
 Live: [real-estate-dusky-six.vercel.app](https://real-estate-dusky-six.vercel.app)
 
+## Role
+
+The ReloKey Cyprus website (Next.js); only this site, separate from the household apps.
+- Goes elsewhere: scripts that run the house's machines go to `dotfiles`; plans and notes go to `chester0`.
+- The map of every repo: the workspace root `CLAUDE.md` (`C:\000CHESTA-CODE\CLAUDE.md`).
+
 ## Tech Stack
 
 - **Framework**: Next.js 16 (App Router) with TypeScript
