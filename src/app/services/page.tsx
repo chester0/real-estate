@@ -4,9 +4,6 @@ import {
   TrendingUp,
   Briefcase,
   Check,
-  Home,
-  BarChart3,
-  Users,
 } from "lucide-react";
 import { Hero } from "@/components/sections/Hero";
 import { IMAGES } from "@/lib/images";

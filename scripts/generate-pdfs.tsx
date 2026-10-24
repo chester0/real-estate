@@ -264,7 +264,7 @@ function InvestmentReportPDF() {
         <Text style={s.paragraph}>
           Cyprus continues to attract property investors from across Europe, the Middle East, and
           beyond. This report provides a data-driven analysis of investment returns across the
-          island's major cities.
+          island&apos;s major cities.
         </Text>
 
         <Text style={s.sectionTitle}>Why Invest in Cyprus?</Text>

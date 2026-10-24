@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, KeyRound } from "lucide-react";
@@ -8,12 +8,11 @@ import { BRAND, NAV_LINKS } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
 
 export function Header() {
-  const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
+  // The menu is open only for the page it was opened on, so navigating closes it without an
+  // effect (react.dev: "You might not need an effect" - derive state instead of syncing it).
+  const [openOnPath, setOpenOnPath] = useState<string | null>(null);
+  const mobileOpen = openOnPath === pathname;
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
@@ -49,7 +48,7 @@ export function Header() {
 
           <button
             className="md:hidden p-2 text-brand-text"
-            onClick={() => setMobileOpen(!mobileOpen)}
+            onClick={() => setOpenOnPath(mobileOpen ? null : pathname)}
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
