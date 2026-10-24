@@ -29,7 +29,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
 }
 
 function parsePost(slug: string, raw: string): BlogPost {
-  const frontmatterMatch = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  const frontmatterMatch = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
 
   if (!frontmatterMatch) {
     return { slug, title: slug, date: "", excerpt: "", content: raw };

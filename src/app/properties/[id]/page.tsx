@@ -21,7 +21,6 @@ import { Button } from "@/components/ui/Button";
 import { CTABanner } from "@/components/sections/CTABanner";
 import { getAllProperties, getPropertyById } from "@/lib/properties";
 import { BRAND } from "@/lib/constants";
-import { IMAGES } from "@/lib/images";
 import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
